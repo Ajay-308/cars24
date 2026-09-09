@@ -1,8 +1,3 @@
-"""
-SQLAlchemy engine/session setup. Uses SQLite by default so the project
-runs with zero external infra -- swap DATABASE_URL for Postgres/MySQL
-in production without changing any other code.
-"""
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
@@ -17,7 +12,6 @@ Base = declarative_base()
 
 
 def get_db():
-    """FastAPI dependency that yields a DB session and always closes it."""
     db = SessionLocal()
     try:
         yield db
